@@ -32,6 +32,12 @@ class Clock extends HTMLElement {
           font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
           text-align: center;
           border-radius: 1rem;
+          transition: 0.5s;
+          word-spacing: 8px;
+      }
+      .clockWrap:hover {
+        background-color: rgba(0, 0, 0, 0.5);
+        transition: 0.5s;
       }
     </style>
     <div class='clockWrap'>
