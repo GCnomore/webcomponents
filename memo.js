@@ -1,7 +1,9 @@
+import MemoCard from "./memoCard.js";
+
 class Memo extends HTMLElement {
   constructor() {
     super();
-    this.root = this.attachShadow({ mode: 'open' });
+    this.root = this.attachShadow({ mode: "open" });
   }
 
   connectedCallback() {
@@ -30,17 +32,19 @@ class Memo extends HTMLElement {
        </div>
       `;
 
-    const memoForm = this.shadowRoot.querySelector('.memoForm');
-    const memoInput = this.shadowRoot.querySelector('.memoInput');
-    memoForm.addEventListener('submit', (e) =>
+    const memoForm = this.shadowRoot.querySelector(".memoForm");
+    const memoInput = this.shadowRoot.querySelector(".memoInput");
+    memoForm.addEventListener("submit", (e) =>
       this.renderMemo(e, memoInput.value)
     );
   }
 
   renderMemo(e, value) {
     e.preventDefault();
-    console.log(value);
+    const timeStamp = new Date(e.timeStamp);
+    console.log(new Date(e.timeStamp));
+    console.log(MemoCard.memoContent(value, timeStamp));
   }
 }
 
-customElements.define('gc-memo', Memo);
+customElements.define("gc-memo", Memo);

@@ -20,10 +20,11 @@ class Weather extends HTMLElement {
           return response.json();
         })
         .then((data) => {
-          const image = `${data.weather[0].description.replace(
+          let image = `${data.weather[0].description.replace(
             /\s/g,
             ""
           )}.png?raw=true`;
+          image = image.includes("cloud") ? "cloud.png?raw=true" : image;
           const src = `https://github.com/GCnomore/webcomponents/blob/master/weather/img/${image}`;
           this.root.innerHTML = `
         <style>

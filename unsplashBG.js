@@ -1,12 +1,12 @@
 class UnsplashBG extends HTMLElement {
   constructor() {
     super();
-    this.root = this.attachShadow({ mode: 'open' });
+    this.root = this.attachShadow({ mode: "open" });
   }
   connectedCallback() {
     this.renderBg();
   }
-  renderBg(theme = localStorage.getItem('theme')) {
+  renderBg(theme = localStorage.getItem("theme")) {
     if (!theme) {
       this.root.innerHTML = `
         <style>
@@ -129,23 +129,23 @@ class UnsplashBG extends HTMLElement {
         </div>
         `;
     }
-    const changeWrap = this.shadowRoot.querySelector('.changeIconWrap');
-    const themeInput = this.shadowRoot.querySelector('.themeInput');
+    const changeWrap = this.shadowRoot.querySelector(".changeIconWrap");
+    const themeInput = this.shadowRoot.querySelector(".themeInput");
 
-    changeWrap.addEventListener('click', () => {
-      changeWrap.classList.add('hide');
-      themeInput.classList.remove('hide');
+    changeWrap.addEventListener("click", () => {
+      changeWrap.classList.add("hide");
+      themeInput.classList.remove("hide");
     });
 
-    themeInput.addEventListener('keypress', (e) => {
-      if (e.key === 'Enter') {
-        localStorage.setItem('theme', themeInput.value);
+    themeInput.addEventListener("keypress", (e) => {
+      if (e.key === "Enter") {
+        localStorage.setItem("theme", themeInput.value);
         this.renderBg(themeInput.value);
-        changeWrap.classList.remove('hide');
-        themeInput.classList.add('hide');
+        changeWrap.classList.remove("hide");
+        themeInput.classList.add("hide");
       }
     });
   }
 }
 
-customElements.define('unsplash-bg', UnsplashBG);
+customElements.define("unsplash-bg", UnsplashBG);
